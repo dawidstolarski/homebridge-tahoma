@@ -83,7 +83,7 @@ export class Platform implements DynamicPlatformPlugin {
         this.translations = await import(`./lang/${countryCode}.json`)
             .catch(() => import('./lang/en.json'))
             .then((c) => c.default);
-        
+
     }
 
     /**
@@ -199,6 +199,7 @@ export class Platform implements DynamicPlatformPlugin {
         action: The action to execute
     */
     public executeAction(label: string, action: Action, highPriority = false, standalone = false) {
+        console.log('executeAction')
         if (standalone) {
             // Run action in standalone execution
             return this.client.execute(highPriority ? 'apply/highPriority' : 'apply', new Execution(label + ' - HomeKit', action));
@@ -224,7 +225,7 @@ export class Platform implements DynamicPlatformPlugin {
 
     /**
      * Translate
-     * @param path 
+     * @param path
      * @returns string
      */
     public translate(label: string): string | null {

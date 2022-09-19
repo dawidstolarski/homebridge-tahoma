@@ -56,7 +56,7 @@ export default class RollerShutter extends Mapper {
         this.targetPosition.onSet(this.debounce(this.setTargetPosition));
         return service;
     }
-    
+
     /**
 	* Triggered when Homekit try to modify the Characteristic.TargetPosition
 	* HomeKit '0' (Close) => 0% Deployment
@@ -91,6 +91,7 @@ export default class RollerShutter extends Mapper {
     * HomeKit '100' (Open) => 0% Closure
     **/
     async setTargetPosition(value) {
+        console.log(value);
         if (this.cancelTimeout !== null) {
             clearTimeout(this.cancelTimeout);
         }

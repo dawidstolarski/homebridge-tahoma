@@ -130,6 +130,8 @@ export default abstract class Mapper {
     }
 
     protected async executeCommands(commands: Command | Array<Command> | undefined, standalone = false): Promise<Action> {
+        console.log('executeCommands')
+        console.log(commands)
         if (commands === undefined || (Array.isArray(commands) && commands.length === 0)) {
             this.error('No target command for', this.device.label);
             throw new Error('No target command for ' + this.device.label);
